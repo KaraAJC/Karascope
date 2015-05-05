@@ -1,0 +1,47 @@
+<h1>Listing Posts</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th colspan="2"></th>
+  </tr>
+
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.text %></td>
+      <td><%= link_to 'Show', post_path(post) %></td>
+      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New Post', new_post_path %>
+
+<hr>
+<h3>form tag</h3>
+
+<%= form_tag do %>
+  <%= label_tag(:title, "post title:") %>
+  <%= text_field_tag(:title) %>
+  <%= text_area_tag(:text) %>
+  <%= submit_tag("POW!") %>
+<% end %>
+
+<hr>
+<h3>form for</h3>
+
+<%= form_for :post do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_area :body %>
+  <%= f.submit "WERK!" %>
+<% end %>
+
+
+<hr>
+<h3>Button_To code</h3>
+<%= button_to "New", new_post_path %>
+<hr>
+<h3>link_to code</h3>
+<%= link_to "AWESOME posts", posts_path, id: "news", class: "test_post"%>
